@@ -46,6 +46,12 @@ body {
   padding: 10px;
   color: #e23baa;
   font-weight: bolder;
+  cursor: pointer;
+}
+
+.container-box button:hover, #reset:hover {
+  background-color: #e23baa;
+  color: white;
 }
 
 .info {

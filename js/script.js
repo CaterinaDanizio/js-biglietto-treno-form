@@ -1,33 +1,48 @@
 // Assegnazione valore input
 
-var nome = document.getElementById('nome');
+  // Nome
 
-console.log(nome.value);
+  var nome = document.getElementById('nome');
 
-var chilometri = document.getElementById('chilometri');
-
-console.log(chilometri.value);
-
-var fascia = document.getElementById('fascia');
-
-console.log(fascia.value);
+  console.log(nome.value);
 
 
-// Output prodotto dal bottone Genera
+// Bottoni
 
-var bottone = document.getElementById('mybutton');
+  var genera = document.getElementById('genera');
+  var reset = document.getElementById('reset');
 
-bottone.addEventListener('click',
+// Funzionalità Genera
+
+genera.addEventListener('click',
  function() {
-   document.getElementById('passeggero').innerHTML = nome.value;
-   console.log(chilometri.value);
-   console.log(fascia.value);
-} );
+   var km = document.getElementById('km');
 
-// Prezzo biglietto intero
-var prezzoTreno = (chilometri.value * 0.21).toFixed(2);
+   var eta = document.getElementById('eta');
 
-bottone.addEventListener('click',
- function() {
-   console.log("Costo del treno è", prezzoTreno + " euro");
-} );
+   // Prezzo BIGLIETTO
+
+   var prezzoTreno = (km.value * 0.21).toFixed(2);
+   console.log(prezzoTreno);
+
+   var offerta;
+
+   // Prezzi scontati e offerte
+
+   if ( eta == "minorenne" ) {
+           prezzoTreno = (prezzoTreno - (prezzoTreno * 0.20)).toFixed(2);
+           var offerta = "Offerta Young";
+         }
+
+         else if ( eta == "over65" ) {
+           prezzoTreno = (prezzoTreno - (prezzoTreno * 0.20)).toFixed(2);
+           var offerta = "Offerta Silver";
+         }
+  } );
+
+
+// Output finali da stampare in pagina
+
+document.getElementById('passeggero').innerHTML = nome.value;
+document.getElementById('offer').innerHTML = offerta;
+document.getElementById('price').innerHTML = prezzoTreno;
